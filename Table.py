@@ -16,11 +16,11 @@ End_Minute = {'1': 2, '2': 0, '3': 0, '4': 50, '5': 10,
               '6': 0, '7': 50, '8': 40, '9': 40, '10': 30, '11': 20}
 
 
-Year_Begin = '2021'  # 开学年份
+Year_Begin = '202x'  # 开学年份
 
-Month_Begin = '03'  # 开学月份
+Month_Begin = 'xx'  # 开学月份
 
-Day_Begin = '01'  # 开学日
+Day_Begin = 'xx'  # 开学日
 
 Pdf_Path = 'xxx(20xx-20xx-x)课表.pdf'  # 相对路径或绝对路径
 

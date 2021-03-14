@@ -12,11 +12,11 @@ ICS文件可以导入至WIN10日历、手机各种内置日历应用等。
 
 安装环境
 ---
-**Python 3.6.9或以上**  
+**Python 3.6以上**  
 **Python第三方库pdfplumber**
 
 
-  
+
 因为通过pip安装pdfplumber会自动安装依赖包pdfminer.six，而pdfminer.six会导致读取课表内容失败，将pdfminer.six换成pdfminer后便没有问题。所以**须按顺序执行下述命令**。
 >`pip3 install pdfplumber`  
 >`pip3 uninstall pdfminer.six`  
@@ -26,6 +26,7 @@ ICS文件可以导入至WIN10日历、手机各种内置日历应用等。
 ---
 ```python
 # 需要在脚本中修改以下信息
+# 严格意义上此处的开学日是指该学期第一周的星期一
 
 Year_Begin = '202x'  # 开学年份
 
