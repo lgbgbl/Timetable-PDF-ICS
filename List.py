@@ -6,14 +6,26 @@ import math
 from datetime import datetime, timedelta
 
 # 记录上课、下课时分的字典
-Begin_Hour = {'1': 8, '2': 9, '3': 10, '4': 11, '5': 14,
-              '6': 15, '7': 16, '8': 17, '9': 19, '10': 19, '11': 20}
-Begin_Minute = {'1': 30, '2': 20, '3': 20, '4': 10, '5': 30,
-                '6': 20, '7': 10, '8': 0, '9': 0, '10': 50, '11': 40}
-End_Hour = {'1': 9, '2': 10, '3': 11, '4': 11, '5': 15,
-            '6': 16, '7': 16, '8': 17, '9': 19, '10': 20, '11': 21}
-End_Minute = {'1': 2, '2': 0, '3': 0, '4': 50, '5': 10,
-              '6': 0, '7': 50, '8': 40, '9': 40, '10': 30, '11': 20}
+TimeTable = {
+    "石牌": {
+        'Begin_Hour':   {'1': 8,  '2': 9,  '3': 10, '4': 11, '5': 14, '6': 15, '7': 16, '8': 17, '9': 19, '10': 19, '11': 20},
+        'Begin_Minute': {'1': 30, '2': 20, '3': 20, '4': 10, '5': 30, '6': 20, '7': 10, '8': 0,  '9': 0,  '10': 50, '11': 40},
+        'End_Hour':     {'1': 9,  '2': 10, '3': 11, '4': 11, '5': 15, '6': 16, '7': 16, '8': 17, '9': 19, '10': 20, '11': 21},
+        'End_Minute':   {'1': 10, '2': 0,  '3': 0,  '4': 50, '5': 10, '6': 0,  '7': 50, '8': 40, '9': 40, '10': 30, '11': 20}
+    },
+    "大学城": {
+        'Begin_Hour':   {'1': 8,  '2': 9,  '3': 10, '4': 11, '5': 14, '6': 14, '7': 15, '8': 16, '9': 19, '10': 19, '11': 20},
+        'Begin_Minute': {'1': 30, '2': 20, '3': 20, '4': 10, '5': 0,  '6': 50, '7': 40, '8': 30, '9': 0,  '10': 50, '11': 40},
+        'End_Hour':     {'1': 9,  '2': 10, '3': 11, '4': 11, '5': 14, '6': 15, '7': 16, '8': 17, '9': 19, '10': 20, '11': 21},
+        'End_Minute':   {'1': 10, '2': 0,  '3': 0,  '4': 50, '5': 40, '6': 30, '7': 20, '8': 10, '9': 40, '10': 30, '11': 20}
+    },
+    "南海": {
+        'Begin_Hour':   {'1': 8,  '2': 9,  '3': 10, '4': 11, '5': 14, '6': 14, '7': 15, '8': 16, '9': 19, '10': 19, '11': 20},
+        'Begin_Minute': {'1': 30, '2': 20, '3': 20, '4': 10, '5': 0,  '6': 50, '7': 40, '8': 30, '9': 0,  '10': 50, '11': 40},
+        'End_Hour':     {'1': 9,  '2': 10, '3': 11, '4': 11, '5': 14, '6': 15, '7': 16, '8': 17, '9': 19, '10': 20, '11': 21},
+        'End_Minute':   {'1': 10, '2': 0,  '3': 0,  '4': 50, '5': 40, '6': 30, '7': 20, '8': 10, '9': 40, '10': 30, '11': 20}
+    }
+}
 
 
 Year_Begin = '202x'  # 开学年份
@@ -21,6 +33,8 @@ Year_Begin = '202x'  # 开学年份
 Month_Begin = 'xx'  # 开学月份
 
 Day_Begin = 'xx'  # 开学日
+
+Location = "xx"  # 石牌 / 大学城 / 南海
 
 Pdf_Path = 'xxx(20xx-20xx-x)课表.pdf'  # 相对路径或绝对路径
 
@@ -41,10 +55,10 @@ class Lesson:
         self.odd_dual = True if info_lesson['单双周'] is not None else False
 
         self.begin_time = datetime(eval(Year_Begin), eval(Month_Begin.lstrip('0')), eval(Day_Begin.lstrip('0'))) + timedelta(
-            days=self.weekday+7*(self.begin_week-1), hours=Begin_Hour[self.begin_section], minutes=Begin_Minute[self.begin_section])
+            days=self.weekday+7*(self.begin_week-1), hours=TimeTable[Location]['Begin_Hour'][self.begin_section], minutes=TimeTable[Location]['Begin_Minute'][self.begin_section])
 
         self.end_time = datetime(eval(Year_Begin), eval(Month_Begin.lstrip('0')), eval(Day_Begin.lstrip('0'))) + timedelta(
-            days=self.weekday+7*(self.begin_week-1), hours=End_Hour[self.end_section], minutes=End_Minute[self.end_section])
+            days=self.weekday+7*(self.begin_week-1), hours=TimeTable[Location]['End_Hour'][self.end_section], minutes=TimeTable[Location]['End_Minute'][self.end_section])
 
 
 class Caldenlar:

@@ -34,6 +34,8 @@ Month_Begin = 'xx'  # 开学月份
 
 Day_Begin = 'xx'  # 开学日
 
+Location = "xx"  # 石牌 / 大学城 / 南海
+
 Pdf_Path = 'xxx(20xx-20xx-x)课表.pdf'  # 相对路径或绝对路径
 
 Trigger_Time = 20  # 提前多少分钟提醒（默认为20分钟，此数值不建议调成太大）
